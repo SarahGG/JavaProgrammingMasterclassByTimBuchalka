@@ -9,7 +9,9 @@ public class Main {
         System.out.println("myFirstNumber is " + myFirstNumber);
 
         // Chapter 3, Lesson 23
-        int mySecondNumber = 7 % 2;
-        int myThirdNumber = 10 * 3;
+        int mySecondNumber = 7 % 28;
+        int myThirdNumber = 100 * 3;
+        int myTotalNumber = myFirstNumber + mySecondNumber + myThirdNumber;
+        System.out.println("myTotalNumber is " + myTotalNumber);
     }
 }
