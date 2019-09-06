@@ -13,5 +13,7 @@ public class Main {
         int myThirdNumber = 100 * 3;
         int myTotalNumber = myFirstNumber + mySecondNumber + myThirdNumber;
         System.out.println("myTotalNumber is " + myTotalNumber);
+
+        int myLastOne = 1000 - myTotalNumber;
     }
 }
