@@ -3,6 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    // Get the MIN and MAX value of floats and doubles
+        float myMinFloatValue = Float.MIN_VALUE;
     }
 }
