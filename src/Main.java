@@ -15,5 +15,6 @@ public class Main {
         System.out.println("myTotalNumber is " + myTotalNumber);
 
         int myLastOne = 1000 - myTotalNumber;
+        System.out.println("myLastOne is " + myLastOne);
     }
 }
