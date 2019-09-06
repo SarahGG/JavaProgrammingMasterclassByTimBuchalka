@@ -6,5 +6,6 @@ public class Main {
 
         // Chapter 3, Lesson 22
         int myFirstNumber = 4;
+        System.out.println("myFirstNumber is " + myFirstNumber);
     }
 }
