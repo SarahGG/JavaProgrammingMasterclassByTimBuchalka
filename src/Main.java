@@ -10,5 +10,6 @@ public class Main {
 
         // Chapter 3, Lesson 23
         int mySecondNumber = 7 % 2;
+        int myThirdNumber = 10 * 3;
     }
 }
