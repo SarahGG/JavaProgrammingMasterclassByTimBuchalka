@@ -10,5 +10,6 @@ public class Main {
         double myMinDoubleValue = Double.MIN_VALUE;
         double myMaxDoubleValue = Double.MAX_VALUE;
 
+        System.out.printf("The Float value range is from %f to %f%n", myMinFloatValue, myMaxFloatValue);
     }
 }
