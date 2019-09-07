@@ -11,5 +11,6 @@ public class Main {
         double myMaxDoubleValue = Double.MAX_VALUE;
 
         System.out.printf("The Float value range is from %f to %f%n", myMinFloatValue, myMaxFloatValue);
+        System.out.printf("The Double value range is from %e to %e%n", myMinDoubleValue, myMaxDoubleValue);
     }
 }
