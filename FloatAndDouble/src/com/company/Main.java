@@ -6,5 +6,8 @@ public class Main {
 	// Get the MIN and MAX value of floats and doubles
         float myMinFloatValue = Float.MIN_VALUE;
         float myMaxFloatValue = Float.MAX_VALUE;
+
+        double myMinDoubleValue = Double.MIN_VALUE;
+
     }
 }
