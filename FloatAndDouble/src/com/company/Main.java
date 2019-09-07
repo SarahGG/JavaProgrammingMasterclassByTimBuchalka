@@ -8,6 +8,7 @@ public class Main {
         float myMaxFloatValue = Float.MAX_VALUE;
 
         double myMinDoubleValue = Double.MIN_VALUE;
+        double myMaxDoubleValue = Double.MAX_VALUE;
 
     }
 }
