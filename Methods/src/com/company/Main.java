@@ -28,14 +28,16 @@ public class Main {
     }
 
     public static int calculateHighScorePosition(int playerScore) {
+        int tablePosition = 4;
+
         if(playerScore >= 1000) {
-            return 1;
+            tablePosition = 1;
         } else if(playerScore >= 500) {
-            return 2;
+            tablePosition = 2;
         } else if (playerScore >= 100) {
-            return 3;
-        } else {
-            return 4;
+            tablePosition = 3;
         }
+
+        return tablePosition;
     }
 }
