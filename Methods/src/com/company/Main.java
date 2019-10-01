@@ -11,7 +11,6 @@ public class Main {
         displayHighScorePosition("Rami", calculateHighScorePosition(400));
         displayHighScorePosition("Kiko", calculateHighScorePosition(50));
     }
-
     public static int calculateScore(boolean gameOver, int score, int levelCompleted, int bonus) {
         if(gameOver) {
             int finalScore = score + (levelCompleted * bonus);
