@@ -19,10 +19,32 @@ public class Main {
         x = getInt(scan);
         System.out.println("x is " + x);
 
+        x  = getIntLBYL(scan);
+        System.out.println("x is " + x);
+
     }
 
     private static int getInt(Scanner scan) {
         return scan.nextInt();
+    }
+
+    private static int getIntLBYL(Scanner scan) {
+        boolean isValid = true;
+        System.out.println("please enter an Integer: ");
+        String input = scan.next();
+
+        for(int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                isValid = false;
+                break;
+            }
+        }
+
+        if(isValid) {
+            return Integer.parseInt(input);
+        } else {
+            return 0;
+        }
     }
 
     private static int divideLBYL (int x, int y) {
