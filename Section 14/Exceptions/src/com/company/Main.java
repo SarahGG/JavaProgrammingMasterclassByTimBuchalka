@@ -22,6 +22,9 @@ public class Main {
         x  = getIntLBYL(scan);
         System.out.println("x is " + x);
 
+        x = getIntEAFP(scan);
+        System.out.println("x is " + x);
+
     }
 
     private static int getInt(Scanner scan) {
@@ -43,6 +46,15 @@ public class Main {
         if(isValid) {
             return Integer.parseInt(input);
         } else {
+            return 0;
+        }
+    }
+
+    private static int getIntEAFP(Scanner scan) {
+        System.out.println("please enter an integer: ");
+        try {
+            return scan.nextInt();
+        } catch(InputMismatchException e) {
             return 0;
         }
     }
