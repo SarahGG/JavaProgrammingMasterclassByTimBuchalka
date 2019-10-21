@@ -13,4 +13,12 @@ public class Main {
             return 0;
         }
     }
+
+    private static int dividEAFP(int x, int y) {
+        try {
+            return x / y;
+        } catch(ArithmeticException e) {
+            return 0;
+        }
+    }
 }
