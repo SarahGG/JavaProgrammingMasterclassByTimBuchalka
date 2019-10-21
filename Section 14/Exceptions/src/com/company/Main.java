@@ -7,7 +7,7 @@ public class Main {
         int y = 0;
 
         System.out.println(divideLBYL(x, y));
-        System.out.println(dividEAFP(x, y));
+        System.out.println(divideEAFP(x, y));
     }
 
     private static int divideLBYL (int x, int y) {
@@ -18,7 +18,7 @@ public class Main {
         }
     }
 
-    private static int dividEAFP(int x, int y) {
+    private static int divideEAFP(int x, int y) {
         try {
             return x / y;
         } catch(ArithmeticException e) {
