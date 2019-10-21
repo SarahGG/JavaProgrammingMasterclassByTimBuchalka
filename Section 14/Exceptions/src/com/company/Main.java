@@ -3,7 +3,11 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
+        int x = 98;
+        int y = 0;
+
+        System.out.println(divideLBYL(x, y));
+        System.out.println(dividEAFP(x, y));
     }
 
     private static int divideLBYL (int x, int y) {
