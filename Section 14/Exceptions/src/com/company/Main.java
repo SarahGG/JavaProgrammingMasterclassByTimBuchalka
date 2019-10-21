@@ -1,14 +1,17 @@
 package com.company;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
         int x = 98;
         int y = 0;
-
+        
         System.out.println(divideLBYL(x, y));
         System.out.println(divideEAFP(x, y));
-        System.out.println(divide(x, y));
+//        System.out.println(divide(x, y)); // commented this out because it causes an error (which was intentional)
     }
 
     private static int divideLBYL (int x, int y) {
