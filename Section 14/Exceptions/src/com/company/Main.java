@@ -6,12 +6,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
         int x = 98;
         int y = 0;
-        
         System.out.println(divideLBYL(x, y));
         System.out.println(divideEAFP(x, y));
 //        System.out.println(divide(x, y)); // commented this out because it causes an error (which was intentional)
+
+        // =================== next part of the lesson
+
+        x = getInt(scan);
+        System.out.println("x is " + x);
+
+    }
+
+    private static int getInt(Scanner scan) {
+        return scan.nextInt();
     }
 
     private static int divideLBYL (int x, int y) {
