@@ -1,9 +1,6 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Locations implements Map<Integer, Location> {
@@ -36,25 +33,49 @@ public class Locations implements Map<Integer, Location> {
     }
 
     static {
-        Scanner scan = null;
-        try {
-            scan = new Scanner(new FileReader("location.txt"));
-            scan.useDelimiter(", ");
+        try(Scanner scan = new Scanner(new FileReader("locations_big.txt"))) {
+            scan.useDelimiter(",");
+
             while(scan.hasNextLine()) {
                 int loc = scan.nextInt();
                 scan.skip(scan.delimiter());
                 String description = scan.nextLine();
-                System.out.println("Imported loc: " + loc + description);
+                System.out.println("Imported loc: " + loc + ": " + description);
                 Map<String, Integer> tempExit = new HashMap<>();
                 locations.put(loc, new Location(loc, description, tempExit));
             }
         } catch(IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scan != null) {
-                scan.close();
-            }
         }
+
+        // will now read the exits
+
+        try (Scanner scan = new Scanner(new BufferedReader(new FileReader("directions_big.txt")))) {
+
+            scan.useDelimiter(",");
+
+            while(scan.hasNextLine()) {
+//                int loc = scan.nextInt();
+//                scan.skip(scan.delimiter());
+//                String direction = scan.next();
+//                scan.skip(scan.delimiter());
+//                int destination = Integer.parseInt(scan.nextLine());
+                String input = scan.nextLine();
+                String[] data = input.split(",");
+
+                int loc = Integer.parseInt(data[0]);
+                String direction = data[1];
+                int destination = Integer.parseInt(data[2]);
+
+                System.out.println(loc + ": " + direction + ": " + destination);
+                Location location = locations.get(loc);
+                location.addExit(direction, destination);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 //        Map<String, Integer> tempExit = new HashMap<String, Integer>();
 //        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java",null));
 //
