@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Locations implements Map<Integer, Location> {
-    public static Map<Integer, Location> locations = new HashMap<Integer, Location>();
+    private static Map<Integer, Location> locations = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         try(FileWriter locFile = new FileWriter("locations.txt");
@@ -18,28 +18,15 @@ public class Locations implements Map<Integer, Location> {
             }
 
         }
-//        try {
-//            FileWriter locFile = new FileWriter("locations.txt");
-//            for (Location location : locations.values()) {
-//                locFile.write(location.getLocationID() + ", " + location.getDescription() + "\n");
-//            }
-//            locFile.close();
-//        } catch (IOException e) {
-//            System.out.println("in the catch block");
-//            e.printStackTrace();
-//        } finally {
-//            System.out.println("in the finally block");
-//        }
     }
 
     static {
         try(Scanner scan = new Scanner(new FileReader("locations_big.txt"))) {
-            scan.useDelimiter(",");
-
             while(scan.hasNextLine()) {
-                int loc = scan.nextInt();
-                scan.skip(scan.delimiter());
-                String description = scan.nextLine();
+                String[] data = scan.nextLine().split(",");
+                int loc = Integer.parseInt(data[0]);
+                String description = data[1];
+
                 System.out.println("Imported loc: " + loc + ": " + description);
                 Map<String, Integer> tempExit = new HashMap<>();
                 locations.put(loc, new Location(loc, description, tempExit));
@@ -49,20 +36,9 @@ public class Locations implements Map<Integer, Location> {
         }
 
         // will now read the exits
-
         try (Scanner scan = new Scanner(new BufferedReader(new FileReader("directions_big.txt")))) {
-
-            scan.useDelimiter(",");
-
             while(scan.hasNextLine()) {
-//                int loc = scan.nextInt();
-//                scan.skip(scan.delimiter());
-//                String direction = scan.next();
-//                scan.skip(scan.delimiter());
-//                int destination = Integer.parseInt(scan.nextLine());
-                String input = scan.nextLine();
-                String[] data = input.split(",");
-
+                String[] data = scan.nextLine().split(",");
                 int loc = Integer.parseInt(data[0]);
                 String direction = data[1];
                 int destination = Integer.parseInt(data[2]);
@@ -71,38 +47,9 @@ public class Locations implements Map<Integer, Location> {
                 Location location = locations.get(loc);
                 location.addExit(direction, destination);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        Map<String, Integer> tempExit = new HashMap<String, Integer>();
-//        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java",null));
-//
-//        tempExit = new HashMap<String, Integer>();
-//        tempExit.put("W", 2);
-//        tempExit.put("E", 3);
-//        tempExit.put("S", 4);
-//        tempExit.put("N", 5);
-//        locations.put(1, new Location(1, "You are standing at the end of a road before a small brick building",tempExit));
-//
-//        tempExit = new HashMap<String, Integer>();
-//        tempExit.put("N", 5);
-//        locations.put(2, new Location(2, "You are at the top of a hill",tempExit));
-//
-//        tempExit = new HashMap<String, Integer>();
-//        tempExit.put("W", 1);
-//        locations.put(3, new Location(3, "You are inside a building, a well house for a small spring",tempExit));
-//
-//        tempExit = new HashMap<String, Integer>();
-//        tempExit.put("N", 1);
-//        tempExit.put("W", 2);
-//        locations.put(4, new Location(4, "You are in a valley beside a stream",tempExit));
-//
-//        tempExit = new HashMap<String, Integer>();
-//        tempExit.put("S", 1);
-//        tempExit.put("W", 2);
-//        locations.put(5, new Location(5, "You are in the forest",tempExit));
     }
 
     @Override
