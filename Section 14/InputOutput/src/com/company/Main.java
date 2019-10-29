@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class Main {
 
 	    Scanner scanner = new Scanner(System.in);
 
-        Map<String, String> vocabulary = new HashMap<>();
+        Map<String, String> vocabulary = new LinkedHashMap<>();
         vocabulary.put("QUIT", "Q");
         vocabulary.put("NORTH", "N");
         vocabulary.put("SOUTH", "S");
