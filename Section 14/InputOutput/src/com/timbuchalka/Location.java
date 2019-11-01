@@ -1,24 +1,26 @@
-package com.company;
+package com.timbuchalka;
 
-import java.util.HashMap;
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * Created by dev on 8/12/2015.
  */
-class Location {
+public class Location implements Serializable{
     private final int locationID;
     private final String description;
     private final Map<String, Integer> exits;
 
-    Location(int locationID, String description, Map<String, Integer> exits) {
+    private long serialVersionUID = 1L;
+
+    public Location(int locationID, String description, Map<String, Integer> exits) {
         this.locationID = locationID;
         this.description = description;
         if(exits != null) {
-            this.exits = new LinkedHashMap<>(exits);
+            this.exits = new LinkedHashMap<String, Integer>(exits);
         } else {
-            this.exits = new LinkedHashMap<>();
+            this.exits = new LinkedHashMap<String, Integer>();
         }
         this.exits.put("Q", 0);
     }
@@ -27,19 +29,18 @@ class Location {
 //        exits.put(direction, location);
 //    }
 
-    int getLocationID() {
+    public int getLocationID() {
         return locationID;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    Map<String, Integer> getExits() {
-        return new HashMap<>(exits);
+    public Map<String, Integer> getExits() {
+        return new LinkedHashMap<String, Integer>(exits);
     }
-
-    void addExit(String direction, int location) {
+    protected void addExit(String direction, int location) {
         exits.put(direction, location);
     }
 }

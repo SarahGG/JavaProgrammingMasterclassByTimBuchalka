@@ -1,7 +1,6 @@
-package com.company;
+package com.timbuchalka;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -19,7 +18,7 @@ public class Main {
 
 	    Scanner scanner = new Scanner(System.in);
 
-        Map<String, String> vocabulary = new LinkedHashMap<>();
+        Map<String, String> vocabulary = new HashMap<String, String>();
         vocabulary.put("QUIT", "Q");
         vocabulary.put("NORTH", "N");
         vocabulary.put("SOUTH", "S");
@@ -27,8 +26,8 @@ public class Main {
         vocabulary.put("EAST", "E");
 
 
-//        int loc = 1;
         int loc = 64;
+//        int loc = 1;
         while(true) {
             System.out.println(locations.get(loc).getDescription());
 
