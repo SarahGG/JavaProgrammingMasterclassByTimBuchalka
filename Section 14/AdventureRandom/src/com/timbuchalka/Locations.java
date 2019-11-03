@@ -9,6 +9,7 @@ import java.util.*;
 public class Locations implements Map<Integer, Location> {
     private static Map<Integer, Location> locations = new LinkedHashMap<Integer, Location>();
     private static Map<Integer, IndexRecord> index = new LinkedHashMap<>();
+    private static RandomAccessFile ra;
 
     public static void main(String[] args) throws IOException {
         try (RandomAccessFile rao = new RandomAccessFile("locations_rand.dat", "rwd")) {
@@ -75,27 +76,51 @@ public class Locations implements Map<Integer, Location> {
     // 4. The final section of the file will contain the location records (the data). It will start at byte 1700
 
     static {
+        try {
+            ra = new RandomAccessFile("locations_rand.dat", "rwd");
+            int numLocations = ra.readInt();
+            long locationStartPoint = ra.readInt();
 
-        try(ObjectInputStream locFile = new ObjectInputStream(new BufferedInputStream(new FileInputStream("locations.dat")))) {
-            boolean eof = false;
-            while (!eof) {
-                try {
-                    Location location = (Location) locFile.readObject();
-                    System.out.println("Read location " + location.getLocationID() + " : " + location.getDescription());
-                    System.out.println("Found " + location.getExits().size() + " exits");
+            while(ra.getFilePointer() < locationStartPoint) {
+                int locationId = ra.readInt();
+                int locationStart = ra.readInt();
+                int locationLength = ra.readInt();
 
-                    locations.put(location.getLocationID(), location);
-                } catch (EOFException e) {
-                    eof = true;
-                }
+                IndexRecord record = new IndexRecord(locationStart, locationLength);
+                index.put(locationId, record);
             }
-        }catch (InvalidClassException e) {
-            System.out.println("We've found an InvalidClassException " + e.getMessage());
-        } catch(IOException io) {
-            System.out.println("We've found an IO Exception " + io.getMessage());
-        } catch(ClassNotFoundException e) {
-            System.out.println("We've found a ClassNotFoundException " + e.getMessage());
+
+
+        } catch (IOException e) {
+            System.out.println("Our exception was caught!");
+            e.printStackTrace();
         }
+    }
+
+    public Location getLocation(int locationID) throws IOException {
+        IndexRecord record = index.get(locationID); // index has been loaded previous to this.
+        // We are here collecting to location and it's record using the locationID that has been passed.
+        ra.seek(record.getStartByte()); // beginning to search the file for the starting byte assigned to the record we just built.
+        int id = ra.readInt(); // reading the id number from the record, because it's there and we need to move past it.
+        String description = ra.readUTF(); // reads the description. It knows how long the string is and when to stop
+        // reading it because this is originally stored as it's length and THEN the string, so anything that reads it
+        // knows how long the following string is.
+        String exits = ra.readUTF(); // reading the string that is all the exits
+        String[] exitPart = new String(exits).split(","); // splits the exits variable, because of their delimiter.
+
+        Location location = new Location(locationID, description, null); // creates the location object, but without exits
+
+        if (locationID != 0) { // if our location isn't 0 (quit), proceed to load exits todo: make this a method
+            for (int i = 0; i < exitPart.length; i++) { // for each exit
+                System.out.println("exitPart = " + exitPart[i]);
+                System.out.println("exitPart[+1] = " + exitPart[i+1]);
+                String direction = exitPart[i]; // direction of this exit
+                int destination = Integer.parseInt(exitPart[++i]); // destination of this exit is in the next index
+                location.addExit(direction,destination); // adds the exit to our location object
+            }
+        }
+
+        return location; // returns the location object
     }
 
     @Override
@@ -157,5 +182,9 @@ public class Locations implements Map<Integer, Location> {
     @Override
     public Set<Entry<Integer, Location>> entrySet() {
         return locations.entrySet();
+    }
+
+    public void close() throws IOException {
+        ra.close();
     }
 }
