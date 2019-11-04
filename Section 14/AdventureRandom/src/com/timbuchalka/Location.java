@@ -18,29 +18,26 @@ public class Location implements Serializable{
         this.locationID = locationID;
         this.description = description;
         if(exits != null) {
-            this.exits = new LinkedHashMap<String, Integer>(exits);
+            this.exits = new LinkedHashMap<>(exits);
         } else {
-            this.exits = new LinkedHashMap<String, Integer>();
+            this.exits = new LinkedHashMap<>();
         }
         this.exits.put("Q", 0);
     }
 
-//    public void addExit(String direction, int location) {
-//        exits.put(direction, location);
-//    }
-
-    public int getLocationID() {
+    int getLocationID() {
         return locationID;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public Map<String, Integer> getExits() {
-        return new LinkedHashMap<String, Integer>(exits);
+    Map<String, Integer> getExits() {
+        return new LinkedHashMap<>(exits);
     }
-    protected void addExit(String direction, int location) {
+
+    void addExit(String direction, int location) {
         exits.put(direction, location);
     }
 }

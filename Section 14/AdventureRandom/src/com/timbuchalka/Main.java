@@ -19,12 +19,7 @@ public class Main {
 
 	    Scanner scanner = new Scanner(System.in);
 
-        Map<String, String> vocabulary = new HashMap<String, String>(); // todo: make this a method
-        vocabulary.put("QUIT", "Q");
-        vocabulary.put("NORTH", "N");
-        vocabulary.put("SOUTH", "S");
-        vocabulary.put("WEST", "W");
-        vocabulary.put("EAST", "E");
+        Map<String, String> vocabulary = loadVocabulary();
 
         Location currentLocation = locations.getLocation(1);
 
@@ -61,5 +56,16 @@ public class Main {
             }
         }
         locations.close();
+    }
+
+    private static Map<String, String> loadVocabulary() {
+        Map<String, String> vocabulary = new HashMap<>();
+        vocabulary.put("QUIT", "Q");
+        vocabulary.put("NORTH", "N");
+        vocabulary.put("SOUTH", "S");
+        vocabulary.put("WEST", "W");
+        vocabulary.put("EAST", "E");
+
+        return vocabulary;
     }
 }
