@@ -1,5 +1,7 @@
 package com.company;
 
+import java.awt.desktop.AppReopenedEvent;
+
 public class Vehicle {
     private double speed;
     private int wheels;
@@ -14,11 +16,11 @@ public class Vehicle {
         this.speed = speed;
     }
 
-    public int getWheels() {
+    int getWheels() {
         return wheels;
     }
 
-    public void setWheels(int wheels) {
+    private void setWheels(int wheels) {
         this.wheels = wheels;
     }
 
@@ -26,7 +28,7 @@ public class Vehicle {
         return seats;
     }
 
-    public void setSeats(int seats) {
+    private void setSeats(int seats) {
         this.seats = seats;
     }
 
@@ -34,14 +36,14 @@ public class Vehicle {
         return doors;
     }
 
-    public void setDoors(int doors) {
+    private void setDoors(int doors) {
         this.doors = doors;
     }
 
-    public Vehicle(double speed, int wheels, int seats, int doors) {
-        this.speed = speed;
-        this.wheels = wheels;
-        this.seats = seats;
-        this.doors = doors;
+    Vehicle(int wheels, int seats, int doors) {
+        setSpeed(0.00d);
+        setWheels(wheels);
+        setSeats(seats);
+        setDoors(doors);
     }
 }

@@ -4,13 +4,13 @@ public class Car extends Vehicle {
     private int mirrors;
     private int gear;
 
-    public Car(double speed, int wheels, int seats, int doors, int mirrors, int gear) {
-        super(speed, wheels, seats, doors);
-        setGear(gear);
+    Car(int wheels, int seats, int doors, int mirrors) {
+        super(wheels, seats, doors);
+        setGear(0);
         setMirrors(mirrors);
     }
 
-    public int getGear() {
+    private int getGear() {
         return gear;
     }
 
@@ -22,7 +22,7 @@ public class Car extends Vehicle {
         return mirrors;
     }
 
-    public void setMirrors(int mirrors) {
+    private void setMirrors(int mirrors) {
         this.mirrors = mirrors;
     }
 
