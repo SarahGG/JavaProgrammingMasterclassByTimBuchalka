@@ -126,6 +126,26 @@ public class Main {
         }
     }
 
+    private static void challenge11() {
+        buildMenu("Challenge 11", "\t\tGiven the following list of coordinates, extract the numbers from the curly braces:" +
+                "\n\n" +
+                "\t\t{0, 2}, {0, 5}, {1, 3}, {2, 4};");
+
+        String ch11regex = "(\\d), (\\d)";
+        System.out.println("\t\tregex string is: " + ch11regex);
+        String ch11String = "{0, 2}, {0, 5}, {1, 3}, {2, 4};";
+        Pattern ch11pattern = Pattern.compile(ch11regex);
+        Matcher ch11matcher = ch11pattern.matcher(ch11String);
+
+        int pointCount = 0;
+        while(ch11matcher.find()) {
+            pointCount++;
+
+            System.out.println("Point " + pointCount + " Coordinates: (x = " + ch11matcher.group(1) + ", y = " + ch11matcher.group(2) + ")");
+
+        }
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
@@ -135,6 +155,7 @@ public class Main {
         challenge8();
         challenge9();
         challenge10();
+        challenge11();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
