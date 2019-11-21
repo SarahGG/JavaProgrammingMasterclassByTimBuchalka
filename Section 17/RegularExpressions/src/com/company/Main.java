@@ -109,6 +109,23 @@ public class Main {
         }
     }
 
+    private static void challenge10() {
+        buildMenu("Challenge 10",
+                "\tAn alteration has been made to the last challenge's string. Adjust your regex accordingly" +
+                        "\n\n" +
+                        "\tabcd.135\\uvqz.7\\tzik.999\n");
+
+        String ch10regex = "[a-zA-Z]+\\.([0-9]+)";
+        System.out.println("\t\tregex string is: " + ch10regex);
+        String ch10String = "abcd.135uvqz.7tzik.999";
+        Pattern ch10pattern = Pattern.compile(ch10regex);
+        Matcher ch10matcher = ch10pattern.matcher(ch10String);
+
+        while(ch10matcher.find()) {
+            System.out.println("\t\t\tfound a match (index " + ch10matcher.start(1) + " - " + ch10matcher.end(1) + " ): " + ch10matcher.group(1));
+        }
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
@@ -117,6 +134,7 @@ public class Main {
         challenge7();
         challenge8();
         challenge9();
+        challenge10();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
