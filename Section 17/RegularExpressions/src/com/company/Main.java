@@ -92,6 +92,23 @@ public class Main {
         }
     }
 
+    private static void challenge9() {
+        buildMenu("Challenge 9",
+                "\tAn alteration has been made to the last challenge's string. Adjust your regex accordingly" +
+                        "\n\n" +
+                        "\tabcd.135\\uvqz.7\\tzik.999\n");
+
+        String ch8regex = "([a-zA-Z]+)(\\.)([0-9]+)";
+        System.out.println("\t\tregex string is: " + ch8regex);
+        String ch8String = "abcd.135uvqz.7tzik.999";
+        Pattern ch8pattern = Pattern.compile(ch8regex);
+        Matcher ch8matcher = ch8pattern.matcher(ch8String);
+
+        while(ch8matcher.find()) {
+            System.out.println("\t\t\tfound a match!: " + ch8matcher.group(3));
+        }
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
@@ -99,6 +116,7 @@ public class Main {
         challenge5();
         challenge7();
         challenge8();
+        challenge9();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
