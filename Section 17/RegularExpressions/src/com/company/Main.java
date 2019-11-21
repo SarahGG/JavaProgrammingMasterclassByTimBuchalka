@@ -29,9 +29,22 @@ public class Main {
         System.out.println("\t\tRegex matches \"" + ch2StringBike + "\": " + Pattern.matches(ch2regexPattern, ch2StringBike));
     }
 
+    private static void challenge4() {
+        buildMenu("Challenge 4",
+                "\tReplace all occurrences of blank with an underscore for the following string:" +
+                        "\n" +
+                        "\t\"Replace all blanks with underscores.\"" +
+                        "\n\n" +
+                        "\tPrint out the resulting String.");
+
+        String ch4String = "Replace all blanks with underscores.";
+        System.out.println("\t\t" + ch4String.replaceAll("\\s", "_"));
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
+        challenge4();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
