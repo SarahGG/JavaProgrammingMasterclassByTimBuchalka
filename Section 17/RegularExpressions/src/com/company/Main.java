@@ -74,12 +74,31 @@ public class Main {
         System.out.println("\t\tOur regex matches our string: " + Pattern.matches(ch7regex, ch7String));
     }
 
+    private static void challenge8() {
+        buildMenu("Challenge 8",
+                "\tModify the regex in ch7 so that is prints all the digits from the matching sequences.\n" +
+                        "\tUse the following code to accomplish this:" +
+                        "\n\n" +
+                        "\tabcd.135uvqz.7tzik.999");
+
+        String ch8regex = "([a-zA-Z]+)(\\.)([0-9]+)";
+        System.out.println("\t\tregex string is: " + ch8regex);
+        String ch8String = "abcd.135uvqz.7tzik.999";
+        Pattern ch8pattern = Pattern.compile(ch8regex);
+        Matcher ch8matcher = ch8pattern.matcher(ch8String);
+
+        while(ch8matcher.find()) {
+            System.out.println("\t\t\tfound a match!: " + ch8matcher.group(3));
+        }
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
         challenge4();
         challenge5();
         challenge7();
+        challenge8();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
