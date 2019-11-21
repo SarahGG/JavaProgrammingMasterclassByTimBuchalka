@@ -41,10 +41,29 @@ public class Main {
         System.out.println("\t\t" + ch4String.replaceAll("\\s", "_"));
     }
 
+    private static void challenge5() {
+        buildMenu("Challenge 5 & 6",
+                "\tWrite a regular expression that will match the following string in its entirety:" +
+                "\n" +
+                "\t\"aabccccccccddefffg\"" +
+                "\n\n" +
+                "\tUse the String.matches() method to verify your answer.");
+
+        //alternative versions:
+        // String ch5regex = "[a-g]+";
+        // String ch5regex = "[abcdefg]+";
+        String ch5regex = "^(a{2}bc{8}d{2}ef{3}g)$";
+        System.out.println("\t\tregex string is: " + ch5regex);
+        String ch5String = "aabccccccccddefffg";
+        System.out.println("\t\tour challenge string is: " + ch5String);
+        System.out.println("\t\tOur regex matches our string: " + Pattern.matches(ch5regex, ch5String));
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
         challenge4();
+        challenge5();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
