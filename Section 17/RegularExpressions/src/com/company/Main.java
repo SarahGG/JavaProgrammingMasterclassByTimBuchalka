@@ -146,6 +146,17 @@ public class Main {
         }
     }
 
+    private static void challenge12() {
+        buildMenu("Challenge 12", "\tWrite a RegEx that will match to a 5 digit zipcode");
+
+        String ch12regex = "^\\d{5}$";
+        System.out.println("\t\tregex string is: " + ch12regex);
+        String ch12String = "12345";
+        System.out.println("\t\tmatching string is: " + ch12String);
+        System.out.println("\t\tregex matches string: " + Pattern.matches(ch12regex, ch12String));
+
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
@@ -156,6 +167,7 @@ public class Main {
         challenge9();
         challenge10();
         challenge11();
+        challenge12();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
