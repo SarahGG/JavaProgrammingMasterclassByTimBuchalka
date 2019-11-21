@@ -59,11 +59,27 @@ public class Main {
         System.out.println("\t\tOur regex matches our string: " + Pattern.matches(ch5regex, ch5String));
     }
 
+    private static void challenge7() {
+        buildMenu("Challenge 7",
+                "\tWrite a regular expression that will match a string that starts with a series of letters.\n" +
+                "\tThe letter must be followed by a period. After the period, there must be a series of digits.\n" +
+                "\tThe string \"kjisl.22\" would match. The wring \"f5.12a\" would not. Use this string to test your regular expression:" +
+                "\n\n" +
+                "\t\"ABCD.135\"");
+
+        String ch7regex = "^([a-zA-Z]+)(\\.)([0-9]+)$";
+        System.out.println("\t\tregex string is: " + ch7regex);
+        String ch7String = "ABCD.135";
+        System.out.println("\t\tour challenge string is: " + ch7String);
+        System.out.println("\t\tOur regex matches our string: " + Pattern.matches(ch7regex, ch7String));
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
         challenge4();
         challenge5();
+        challenge7();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
