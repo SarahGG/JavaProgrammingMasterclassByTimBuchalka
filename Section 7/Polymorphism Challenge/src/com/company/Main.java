@@ -10,6 +10,10 @@ public class Main {
         // create some methods like start, accelerate, and brake.
         // Now, make 3 classes that extend Car and demonstrate polymorphism.
 
+        System.out.println("We're about the build a new car.");
+        Car newCar = new Car(2, 3, "Ford", "Mustang", 1950);
+        FordFiesta newFiesta = new FordFiesta(1992);
+
 
     }
 }
