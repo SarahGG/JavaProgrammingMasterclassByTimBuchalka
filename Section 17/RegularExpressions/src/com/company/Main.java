@@ -127,9 +127,9 @@ public class Main {
     }
 
     private static void challenge11() {
-        buildMenu("Challenge 11", "\t\tGiven the following list of coordinates, extract the numbers from the curly braces:" +
+        buildMenu("Challenge 11", "\tGiven the following list of coordinates, extract the numbers from the curly braces:" +
                 "\n\n" +
-                "\t\t{0, 2}, {0, 5}, {1, 3}, {2, 4};");
+                "\t{0, 2}, {0, 5}, {1, 3}, {2, 4};");
 
         String ch11regex = "(\\d), (\\d)";
         System.out.println("\t\tregex string is: " + ch11regex);
@@ -157,6 +157,19 @@ public class Main {
 
     }
 
+    private static void challenge13() {
+        buildMenu("Challenge 13", "\tUS Zipcodes can be followed by a dash and another four numbers. " +
+                "\n" +
+                "\tWrite a regular expression that will match those zip codes.");
+
+        String ch13regex = "^\\d{5}(-\\d{4})?$";
+        System.out.println("\t\tregex string is: " + ch13regex);
+        String ch13String = "12345-1111";
+        System.out.println("\t\tmatching string is: " + ch13String);
+        System.out.println("\t\tregex matches string: " + Pattern.matches(ch13regex, ch13String));
+
+    }
+
     public static void main(String[] args) {
         challenge1();
         challenge2();
@@ -168,6 +181,7 @@ public class Main {
         challenge10();
         challenge11();
         challenge12();
+        challenge13();
     }
 
     private static void buildMenu(String menuMessage, String challengeMessage) {
